@@ -29,21 +29,17 @@
     a {
       color: #0d47a1; /* リンクの濃い青 */
       text-decoration: none;
+      cursor: pointer;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
-    #blackout {
+    #hiddenLink {
       display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      z-index: 9999;
+      margin-top: 1em;
+      font-weight: bold;
     }
 
     footer {
@@ -63,7 +59,7 @@
   <main>
     <h2>Minaです。</h2>
     <p>
-      いろいろな気持ちを残すために書こうと思います<br>  
+     Dairy1 : いろいろな気持ちを残すために書こうと思います<br>  
     </p>
 
     <h2>ブログ一覧</h2>
@@ -71,35 +67,25 @@
       <li><a href="https://hikari-hikaru.github.io/Mina_dairyblog2/">2025年5月14日（dairy2ページ）</a></li>
     </ul>
 
-    <!-- クリックで隠しリンクが出るトリガー -->
-    <p id="trigger">（なんでもない文章）</p>
+    <!-- 隠し仕掛け -->
+    <p><a id="trigger">（なんでもない文章）</a></p>
+    <p><a id="hiddenLink">ここから先へ</a></p>
   </main>
 
   <footer>
     <p>© 2025 Mina's Diary</p>
   </footer>
 
-  <div id="blackout"></div>
-
-  <!-- 隠しリンク出現スクリプト -->
   <script>
-    document.getElementById("trigger").addEventListener("click", function() {
-      if (!document.getElementById("secretLink")) {
-        const link = document.createElement("span");
-        link.id = "secretLink";
-        link.textContent = "ここから先へ";
-        link.style.display = "block";
-        link.style.marginTop = "10px";
-        link.style.color = "#0d47a1";
-        link.style.cursor = "pointer";
-        
-        // 2段階目（クリックで実際に飛ぶ）
-        link.addEventListener("click", function() {
-          window.location.href = "https://hikari-hikaru.github.io/hidden_page/"; // 隠しページURL
-        });
+    const trigger = document.getElementById("trigger");
+    const hiddenLink = document.getElementById("hiddenLink");
 
-        this.appendChild(link);
-      }
+    trigger.addEventListener("click", function() {
+      hiddenLink.style.display = "block";
+    });
+
+    hiddenLink.addEventListener("click", function() {
+      window.location.href = "https://hikari-hikaru.github.io/Mina_dailyblog4/";
     });
   </script>
 </body>
